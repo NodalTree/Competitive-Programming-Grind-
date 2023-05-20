@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class GardeningFriends {
+    //https://codeforces.com/problemset/problem/1822/F
     static ArrayList<Integer>[] tree;
     static boolean[] vis;
     static int numOfOps;
