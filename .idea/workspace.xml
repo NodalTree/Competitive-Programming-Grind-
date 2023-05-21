@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aabb802c-c5ab-4c01-bd1f-41a606e391ba" name="Changes" comment="solved E Round Dance">
-      <change afterPath="$PROJECT_DIR$/src/KsyushaAndChinchilla.java" afterDir="false" />
+    <list default="true" id="aabb802c-c5ab-4c01-bd1f-41a606e391ba" name="Changes" comment="still working on this div 3 G, lol pretty hard...gotta go do something else will come back later today on this">
+      <change afterPath="$PROJECT_DIR$/src/IraAndFlamenco.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RoundDance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RoundDance.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +76,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684611478083</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="still working on this div 3 G, lol pretty hard...gotta go do something else will come back later today on this">
+      <created>1684619413080</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684619413080</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -96,6 +102,7 @@
     <MESSAGE value="transferred from replit to github" />
     <MESSAGE value="gardeningfriends 1700 from codeforces upsolved" />
     <MESSAGE value="solved E Round Dance" />
-    <option name="LAST_COMMIT_MESSAGE" value="solved E Round Dance" />
+    <MESSAGE value="still working on this div 3 G, lol pretty hard...gotta go do something else will come back later today on this" />
+    <option name="LAST_COMMIT_MESSAGE" value="still working on this div 3 G, lol pretty hard...gotta go do something else will come back later today on this" />
   </component>
 </project>
