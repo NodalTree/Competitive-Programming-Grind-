@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aabb802c-c5ab-4c01-bd1f-41a606e391ba" name="Changes" comment="1700 solved ira and flamenco">
-      <change afterPath="$PROJECT_DIR$/src/ShockingArrangement.java" afterDir="false" />
+    <list default="true" id="aabb802c-c5ab-4c01-bd1f-41a606e391ba" name="Changes" comment="1600 solved proof of this problem was nice prob gonna make a video on it">
+      <change afterPath="$PROJECT_DIR$/src/DoubleLexo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SRQGuide.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StuckInTheRutSilver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StickDivisions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StickDivisions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684709297697</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="1600 solved proof of this problem was nice prob gonna make a video on it">
+      <created>1684790247366</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684790247366</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,6 +121,7 @@
     <MESSAGE value="solved E Round Dance" />
     <MESSAGE value="still working on this div 3 G, lol pretty hard...gotta go do something else will come back later today on this" />
     <MESSAGE value="1700 solved ira and flamenco" />
-    <option name="LAST_COMMIT_MESSAGE" value="1700 solved ira and flamenco" />
+    <MESSAGE value="1600 solved proof of this problem was nice prob gonna make a video on it" />
+    <option name="LAST_COMMIT_MESSAGE" value="1600 solved proof of this problem was nice prob gonna make a video on it" />
   </component>
 </project>
