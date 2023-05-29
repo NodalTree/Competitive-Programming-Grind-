@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class ProbB{
+public class ArrayMerge{
      https://youtu.be/_0OAo8y7AtI (this is my livesolve)
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
