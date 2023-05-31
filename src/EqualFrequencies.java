@@ -5,36 +5,50 @@ public class EqualFrequencies {
     /*
       Lets fix the unknown information: lets say the equal frequency is x. Then N (mod x) = 0. This implies
       for the common frequency we only have to try the divisors of N which is <=  2* sqrt(N). For each fixed
-      divisor, we can try answering the question. Lets do examples to help us think clearly.
-      Amount of letters needed = A = N/x <= 26 (if not obv skip)
-      N = 36, x = 4, A = 36/4 = 9, H =6 (for case 1)
-      Call the amount of letters we have in our String S,  H.
-      We do some cases A > H, this means the amount of letters we have is less than the amount of letters we need.
-      This means the frequency of some letters is > i...if they were all less than < i, then max(frequency) (which is less than i)
-      times H is less than A * i. So for the ones under we can store what we need in a sum S, and then deal with the ones over
-      optimally (should be ez to code)
-       a over int oist_from_x = over - x over - Math.min(dist_x, S) S  - Math.min(dist_x, S)
-       b over
-       c over
-       d under x- under
-       e under x - under  S
-       f under x - under
+      divisor, we can try answering the question. Lets say string T is currently just a bunch of question marks.
+      Now, if we want to resemble string S as much as possible, then  we to maximize the amount of matches in the string.
+      Intuitively, we should have a frequency array of each character in the string. NOw by simple observation,
+      if the frequency of a character in String S is over the fixed frequency, then we MUST modify the excess. This means
+      we should sort the frequency from greatest to least and deal with the ones that have the most...if it's under the
+      frequency just leave it as it is...for now.
+      Now, we know we are dealing with a bunch of question marks and the highest occuring letter in the string S, call it c.
+      Well then for c, just let min(freq[c],frequency) stay in the string...the rest will be question marks.
+      This always is optimal think about it: for the ones that are over frequency we just let there be the fixed
+      frequency of each one of them and leave the rest for question marks. Now for the ones that are under
+      the frequency we can simply just fill however we need of that letter. Done thats solution.
 
-      A <= H...
-      H = 11
-      a over
-      b over
-      c over
-      d under sum up x - under for all unders
-      e under
-      f over
-      g under
-      h under
-      i under
-      j over
-      k under
-
+      Example to make more clear sense:
+      codeforces
+      c - 2
+      e - 2
+      o - 2
+      d - 1
+      f - 1
+      r - 1
+      d - 1
+      String T = ??????????
+      Frequency: 1, unique letters: 10
+      Deal with highest c, just let one c stay
+      c?????????
+      deal with letter e
+      just let one e stay
+      c??e???????
+      just let one o stay
+      co??e??????
+      for the rest of the other letters simply just fill it out
      */
+    public static class Pair implements Comparable<Pair>{
+        public int freq;
+        public char letter;
+        public Pair(int freq, char letter){
+            this.freq = freq;
+            this.letter = letter;
+        }
+        public int compareTo(Pair other){
+            //always deal with a letter that has highest frequnecy first
+            return other.freq - this.freq;
+        }
+    }
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter pw = new PrintWriter(System.out);
@@ -45,37 +59,74 @@ public class EqualFrequencies {
             int N = Integer.parseInt(st.nextToken());
             st = new StringTokenizer(br.readLine());
             char[] s = st.nextToken().toCharArray();
-            HashMap<Character, Integer> freq_s = new HashMap<>();
-            for (int i = 0; i < N; i++) {
-                freq_s.put(s[i], freq_s.getOrDefault(s[i], 0) + 1);
+            int[] freq = new int[26];
+            char[] t = new char[N];
+            ArrayList<Integer>[] indicies = new ArrayList[26];
+            for(int i = 0; i<26; i++) indicies[i] = new ArrayList<>();
+            for(int i = 0; i<N; i++){
+                indicies[s[i] - 'a'].add(i);
             }
-            int ans = Integer.MAX_VALUE;
-            int amountHave = freq_s.size();
-            for (int frequency = 1; frequency <= N; frequency++) {
-                //for a fixed frequency it has to be a divisor of n
-                if (N % frequency != 0 || N / frequency > 26)
-                    continue;//if freq is not a divisor, then it obv can't work or if we need more than 26 letters
-                int curr = 0;
-                int amount_needed = N / frequency;
-                if (amountHave >= amount_needed) {
-                    //in this case we have more letters used than we need, then at least amoount_needed are under x
-                    for (char key : freq_s.keySet()) {
-                        if (freq_s.get(key) < frequency) {
-                            curr += frequency - freq_s.get(key);//basically if any frequency is under, which obv there will be
-                            //ten we knw we need freq - key changes to the string to make this work...they come form the over ones
-                        }
-                    }
-                } else {
-                    //in this case we have less letters used than we need, so obv some of them have more than frequency... just take the extras from the overs and it;ll work nicely
-                    for (char key : freq_s.keySet()) {
-                        if (freq_s.get(key) > frequency) {
-                            curr += freq_s.get(key) - frequency;
-                        }
+            char[] ans = new char[N];
+            int best_changes = Integer.MAX_VALUE;
+            ArrayList<Pair> letters = new ArrayList<>();
+            for(int i = 0; i<N; i++){
+                freq[s[i] - 'a']++;
+            }
+            for(int i = 0; i<26; i++){
+                letters.add(new Pair(freq[i],(char)(97 + i)));
+            }
+            Collections.sort(letters);//sort by freqeunecy
+            /*for(Pair p: letters){
+                pw.println("letter "+ p.letter + " frequency " + p.freq);
+            }*/
+            for(int frequency = 1; frequency<=N; frequency++){
+                if(N % frequency != 0 || N/frequency > 26) continue;//skip ones that don't work
+                Arrays.fill(t, '?');//initially we don't know what the string t is
+                int unique = N/frequency;
+                for(int i = 0; i<unique; i++){
+                    Pair letter = letters.get(i);
+                    char c = letter.letter;
+                    int freq_c = letter.freq;
+                    int leave = Math.min(frequency, freq_c);//leave this many letters in t
+                    //pw.println("leave this much "+ leave + " for " + c);
+                    ArrayList<Integer> ind = indicies[c - 'a'];
+                    for(int j = 0; j<leave; j++){
+                        t[ind.get(j)] = c;
                     }
                 }
-                ans = Math.min(ans, curr);
+                //pw.println(Arrays.toString(t));
+                //we've left the most we could in the string, now the number of changes it he number of question marks in t
+                int changes = 0;
+                for(int i = 0; i<N; i++){
+                    if(t[i] == '?') changes++;
+                }
+                //pw.println("Number of changes "+ changes);
+                for(int i = 0; i<unique; i++){
+                    Pair letter = letters.get(i);
+                    char c = letter.letter;
+                    int freq_c = letter.freq;
+                    int q_marks = frequency - Math.min(frequency, freq_c) ;//amount o q makrs we got to fill with that letter
+                    int count = 0;
+                    //if(i == unique - 1) pw.println("q marks "+ q_marks);
+                    for(int j = 0; j<N; j++){
+                        if(count == q_marks) break;//we are done get out
+                        if(t[j] == '?') {t[j] = c; count++;}
+
+                    }
+                }
+               // pw.println("Changes "+ changes);
+                //pw.println(Arrays.toString(t));
+                //string is now constructed
+                if(changes < best_changes){
+                    best_changes = changes;
+                    for(int i = 0; i<N; i++){
+                        ans[i] = t[i];
+                    }
+                }
             }
-            pw.println(ans);
+            pw.println(best_changes);
+            for(char c: ans) pw.print(c);
+            pw.println();
         }
         pw.close();
     }
