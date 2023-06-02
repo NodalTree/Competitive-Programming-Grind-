@@ -3,7 +3,7 @@ import java.util.*;
 import java.awt.Point;
 
 public class CopilTrees{
-https://youtu.be/_0OAo8y7AtI
+
     public static class State{
         public int node, edge_index;
         public State(int node, int edge_index){

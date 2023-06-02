@@ -1,8 +1,8 @@
 import java.io.*;
 import java.util.*;
 
-public class ArrayMerge{
 
+public class MagicTriplesEasy {
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter pw = new PrintWriter(System.out);
@@ -10,35 +10,25 @@ public class ArrayMerge{
         int T = Integer.parseInt(st.nextToken());
         while(T-- > 0){
             st = new StringTokenizer(br.readLine());
+            //intuition fix the middle element...which can range from 1 to 10^6
+            //for a fix middle element a, then we need to go through the divisors of a^2
+            //only sqrt(a^2) divisors so it works fast enuff
+            //once we go thru the set divisors we need the frequencies and solution is obv
+            //question was easy bc i had upsolved boss can count, which is a much harder version of this like type of problem
             int N = Integer.parseInt(st.nextToken());
-            int[] a = new int[N];
-            int[] b = new int[N];
+            int[] a = new int [N];
+            int[] freq = new int[1000001];
             st = new StringTokenizer(br.readLine());
-            for(int i = 0; i<N; i++) a[i] = Integer.parseInt(st.nextToken());
-            st = new StringTokenizer(br.readLine());
-            for(int i = 0; i<N; i++) b[i] = Integer.parseInt(st.nextToken());
-            int[] freq_a = new int[2 * N + 1];
-            int[] freq_b = new int[2 * N + 1];
-            freq_a[a[0]] = 1;
-            freq_b[b[0]] = 1;
-            int ans1 = 1;
-            int cur = 1;
-            for(int i = 1; i<N; i++){
-                if(a[i] == a[i - 1]) cur++;
-                else cur = 1;
-                freq_a[a[i]] = Math.max(freq_a[a[i]], cur);
-
-            }
-            int ans2 = 1;
-            int cur2 = 1;
-            for(int i = 1; i<N; i++){
-                if(b[i] == b[i - 1]) cur2++;
-                else cur2 = 1;
-                freq_b[b[i]] = Math.max(freq_b[b[i]], cur2);
+            for(int i = 0; i<N; i++){
+                a[i] = Integer.parseInt(st.nextToken());
+                freq[a[i]]++;
             }
             int ans = 0;
-            for(int i = 0; i<=2 * N; i++){
-                ans = Math.max(freq_a[i] + freq_b[i], ans);
+            for(int i = 0; i<N; i++){
+                ans += Math.max(0, (freq[a[i]] - 1) * (freq[a[i]] - 2));
+                for(int b = 2; a[i] * b * b <= 1000000; b++){
+                    ans += freq[a[i] * b] * freq[a[i] * b * b];
+                }
             }
             pw.println(ans);
         }
