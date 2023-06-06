@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aabb802c-c5ab-4c01-bd1f-41a606e391ba" name="Changes" comment="struggled with so muc for some rason">
-      <change afterPath="$PROJECT_DIR$/src/MagicTriplesEasy.java" afterDir="false" />
+    <list default="true" id="aabb802c-c5ab-4c01-bd1f-41a606e391ba" name="Changes" comment="c++ faster lol">
+      <change afterPath="$PROJECT_DIR$/src/DilucAndKaeya.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MexString.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OmkarAndMedians.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WaterTheTrees.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ArrayMerge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayMerge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CopilTrees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CopilTrees.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Monoblock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonoBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Towers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tower.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685606991311</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="c++ faster lol">
+      <created>1685671386035</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685671386035</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -139,6 +145,7 @@
     <MESSAGE value="1600 solved proof of this problem was nice prob gonna make a video on it" />
     <MESSAGE value="the 3 problems I did today some usaco, cf, and more" />
     <MESSAGE value="struggled with so muc for some rason" />
-    <option name="LAST_COMMIT_MESSAGE" value="struggled with so muc for some rason" />
+    <MESSAGE value="c++ faster lol" />
+    <option name="LAST_COMMIT_MESSAGE" value="c++ faster lol" />
   </component>
 </project>
