@@ -1,0 +1,61 @@
+// Source: https://usaco.guide/general/io
+
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+
+
+int n; int m;
+void solve(){
+cin >> n >> m;
+vi a; a.resize(n);
+vi count; count.resize(n + m + 1);
+for(int& i: a) {cin >> i; count[i] = m + 1;/*assume this element appears in all subarrays*/}
+for(int i = 0; i<m; i++){
+   int p; int v;//pos value
+   cin >> p >> v; p--;
+   //we are changing a[p] to v, so now a[p] loses the remaining subarrays
+   count[a[p]] -= (m - i);//this current value loses this much
+   //however, now v gains that much
+   count[v] += (m - i);
+   a[p] = v;
+}
+ll ans = 0;
+for(int i = 0; i<=n + m; i++){
+	ll contribute_same = (ll) count[i] * (ll)(count[i] - 1)/2;//choose 2 from the same
+	ll contribute_diff = (ll)count[i] * (ll) (m + 1 - count[i]);//choose different 
+	ans += (contribute_same + contribute_diff);
+}
+cout << ans << endl;
+}
+
+int main() {
+	int t; cin >> t; while(t--) solve();
+}
+/*
+Instead of dealing with the whole arrays at once, we can think of the contribution
+that each value, which we know is linearly bounded (values can only be from 1 to n + m,
+this is why u pay close attention to conditions!!!!). Motivation? Well, thinking about whole
+arrays is still thinking in an n * m mindset, which we can't even store. Thus, for a number x,
+1 <= x <= n + m. How much does x contribute to our answer? Well, say x appears cnt[x] times,
+then  cnt[x] choose 2 contribution + cnt[x] * (m + 1 - count[x]). Where'd we get this math from
+well you can think about all the subarrays that include x and all the ones that don't. For the ones that do,
+choose any 2 of them, and x will contribute 1. For the ones that don't include x, fix x and then choose one of those
+, so each cnt[x] will contribute m + 1 - cnt[x]. I guess the idea is we are trying to make x appear to
+count its contribution, so we can either make it appear by choosing two arrays that have  x in them or
+choosing one array that has x in it and one array that doesn't. So, maybe a better way to frame this is:
+given that you want to see how much does x appear, in what ways can x appear in the combination of two subarrays?
+Well it can either appear twice: two subarrays have x, and it can either appear once, one does and one doesn't.
+After that it's clear.
+However, calculating cnt[x] is pretty tricky.
+Here's what will do. We will assume that initially cnt[x] appears m + 1 times. So in all subarrays,
+and until it changes, then we can remove in that state the remaining subarrays we have left, and then now
+we can assume that the new value will appear in the remaining subarrays. So, I guess this is sort of tricky.
+A good way to think of this is we can first assume that it appears in all subarrays, then we change it
+take the remaining out (assuming that that will appear in each subarray), and if that ever changes...we update it
+accordingly.
+
+
+*/
